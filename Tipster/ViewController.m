@@ -88,6 +88,8 @@
     double total = bill + tip;
     self.tipLabel.text = [NSString stringWithFormat:@"$ %.2f", tip];
     self.totalLabel.text = [NSString stringWithFormat:@"$ %.2f", total];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
