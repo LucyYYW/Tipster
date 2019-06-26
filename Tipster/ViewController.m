@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
 
 
+
 @end
 
 @implementation ViewController
@@ -33,8 +34,13 @@
     double bill = [self.billField.text doubleValue];
     
     
+    
     NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
     double tipPercentages = [ percentages [self.tipControl.selectedSegmentIndex] doubleValue];
+    
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //tipPercentages = [defaults doubleForKey:@"default_tip_percentage"];
+    
     
     double tip = tipPercentages * bill;
     double total = bill + tip;
@@ -67,6 +73,31 @@
         self.tipLabel.alpha = 1;
     }];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.tipControl.selectedSegmentIndex = [defaults integerForKey:@"default_tip_percentage"];
+    NSLog(@"View will appear");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"View did appear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    NSLog(@"View will disappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    NSLog(@"View did disappear");
 }
 
 @end
