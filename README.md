@@ -36,7 +36,8 @@ Here's the settings page:
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Making the settings page was challenging.
+Now my settings page is able to reveal changes on the main tips page. Also, once I change the default value on the settings page, that value is saved and kept, i.e. if I go back from the main tips page to the settings page, I can still have what I set previously.
 
 ## Credits
 
