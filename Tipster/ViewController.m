@@ -38,8 +38,6 @@
     NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
     double tipPercentages = [ percentages [self.tipControl.selectedSegmentIndex] doubleValue];
     
-    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //tipPercentages = [defaults doubleForKey:@"default_tip_percentage"];
     
     
     double tip = tipPercentages * bill;
@@ -80,6 +78,16 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.tipControl.selectedSegmentIndex = [defaults integerForKey:@"default_tip_percentage"];
     NSLog(@"View will appear");
+    
+    double bill = [self.billField.text doubleValue];
+    
+    NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
+    double tipPercentages = [ percentages [self.tipControl.selectedSegmentIndex] doubleValue];
+    
+    double tip = tipPercentages * bill;
+    double total = bill + tip;
+    self.tipLabel.text = [NSString stringWithFormat:@"$ %.2f", tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"$ %.2f", total];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
